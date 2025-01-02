@@ -67,7 +67,7 @@
    cd MATA-SERVER
    ```
 
-3. Run the Python client with the following command:
+3. Run automated server using python:
    ```bash
    pip install requests
    pip install -r requirements.txt
@@ -82,19 +82,11 @@
 5. Open your browser and navigate to:
    [http://localhost:8080](http://localhost:8080)
 
----
-
-### Notes
-- The Python client reads the `request.txt` file and sends requests to the PHP server at `localhost:8080`.
-- Ensure the PHP server is running before executing the Python client.
-
----
 
 ## Additional Information
 
 ### Files
-- `main.py`: Python client for sending requests.
-- `request.txt`: Text file containing URLs for testing.
+- `main.py`: Run PHP to localhost instantly.
 - `index.php`: Main PHP script for managing web visits.
 
 ### Support
