@@ -44,54 +44,45 @@
 4. Access the application via your browser by navigating to the uploaded directory.
 
 ### For Localhost (Linux/Termux)
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/wanzxploit/MATA-SERVER.git
-   cd MATA-SERVER
-   ```
 
-2. Update and install dependencies for Linux:
+1. Update and install dependencies for Linux:
    ```bash
    sudo apt update && sudo apt upgrade -y
+   sudo apt install git
+   sudo apt install python
    sudo apt install php php-curl -y
    ```
 
    For Termux:
    ```bash
    pkg update && pkg upgrade -y
+   pkg install git
+   pkg install python
    pkg install php -y
    ```
 
-3. Start the server using PHP's built-in server:
+2. Clone the repository:
    ```bash
-   php -S localhost:8080
-   ```
-
-4. Open your browser and navigate to:
-   [http://localhost:8080](http://localhost:8080)
-
----
-
-## Running the Python Client (main.py)
-
-The Python client can send requests to your running MATA-SERVER for automated testing.
-
-### Installation
-1. Install Python dependencies:
-   ```bash
-   pip install requests
-   ```
-
-2. Create a `request.txt` file containing the target URL(s). Each URL should be on a new line. Example:
-   ```
-   https://example.com
-   https://another-example.com
+   git clone https://github.com/wanzxploit/MATA-SERVER.git
+   cd MATA-SERVER
    ```
 
 3. Run the Python client with the following command:
    ```bash
+   pip install requests
+   pip install -r requirements.txt
    python3 main.py
    ```
+
+4. (Optional) Start the server using PHP's built-in server:
+   ```bash
+   php -S localhost:8080
+   ```
+
+5. Open your browser and navigate to:
+   [http://localhost:8080](http://localhost:8080)
+
+---
 
 ### Notes
 - The Python client reads the `request.txt` file and sends requests to the PHP server at `localhost:8080`.
