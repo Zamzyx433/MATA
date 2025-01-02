@@ -4,7 +4,7 @@
 ![Banner](banner.png)
 
 ![GitHub stars](https://img.shields.io/github/stars/wanzxploit/MATA-SERVER?style=social)
-![Version](https://img.shields.io/badge/version-1.0(Beta)-brightgreen)
+![Version](https://img.shields.io/badge/version-1.5-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.7+-blue)
 ![PHP](https://img.shields.io/badge/php-7.4-blue)
 ![Platform](https://img.shields.io/badge/platform-linux%20%7C%20termux-lightgrey)
