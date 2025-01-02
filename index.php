@@ -5,13 +5,37 @@ ini_set('display_errors', 1);
 class ViewerBot {
     private $url;
     private $referrers = [
-        "https://www.google.com",
-        "https://www.facebook.com",
-        "https://www.twitter.com",
-        "https://www.instagram.com",
-        "https://www.reddit.com",
-        "https://www.linkedin.com"
-    ];
+    "https://www.google.com",
+    "https://www.facebook.com",
+    "https://www.twitter.com",
+    "https://www.instagram.com",
+    "https://www.reddit.com",
+    "https://www.linkedin.com",
+    "http://google.com.sg",
+    "http://google.co.id",
+    "http://google.com.my",
+    "http://google.jp",
+    "http://google.us",
+    "http://google.tl",
+    "http://google.ac",
+    "http://google.ad",
+    "http://google.ae",
+    "http://google.af",
+    "http://google.ag",
+    "http://google.ru",
+    "http://google.by",
+    "http://google.ca",
+    "http://google.cn",
+    "http://google.cl",
+    "http://google.cm",
+    "http://google.cv",
+    "http://google.gg",
+    "http://google.ge",
+    "http://google.gr",
+    "http://google.com.tw",
+    "https://search.yahoo.com",
+    "http://www.beinyu.com"
+];
     
     private $userAgents = [
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
