@@ -1,11 +1,12 @@
 
 # MATA-SERVER
 
+![Banner](banner.png)
 
 ![GitHub stars](https://img.shields.io/github/stars/wanzxploit/MATA-SERVER?style=social)
 ![Version](https://img.shields.io/badge/version-1.0(Beta)-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.7+-blue)
-![PHP](https://img.shields.io/badge/php-3.7+-blue)
+![PHP](https://img.shields.io/badge/php-7.4-blue)
 ![Platform](https://img.shields.io/badge/platform-linux%20%7C%20termux-lightgrey)
 
 **MATA-SERVER** is the PHP web server version of the MATA project. Unlike the terminal-based PHP version hosted at [MATA Repository](https://github.com/wanzxploit/MATA), this version provides a web interface for simulating and analyzing website visits through various user agents and referrers. This project is designed for educational purposes and web traffic simulation.
