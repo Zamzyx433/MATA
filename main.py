@@ -2,9 +2,8 @@ import subprocess
 import time
 import os
 from rich.console import Console
-from rich.text import Text
 from rich.panel import Panel
-from datetime import datetime
+from threading import Thread
 
 console = Console()
 
@@ -30,57 +29,37 @@ class SimplePHPServer:
             console.print(Panel("PHP is not installed or not in PATH", style="bold red"))
             return None
 
-    def parse_log_line(self, line: str):
-        if "GET" in line or "POST" in line:
-            parts = line.split()
-            if len(parts) >= 3:
-                ip = parts[1].split(":")[0]
-                return ip
-        return None
-
-    def monitor_logs(self):
-        while self.process and self.process.poll() is None:
-            output = self.process.stdout.readline()
-            if output:
-                ip = self.parse_log_line(output)
-                if ip:
-                    console.clear()
-                    timestamp = datetime.now().strftime("%H:%M:%S")
-                    text = Text.assemble(
-                        ("Visitor IP: ", "bold yellow"),
-                        (ip, "bold cyan"),
-                        (" | Access Time: ", "bold yellow"),
-                        (timestamp, "bold green")
-                    )
-                    panel = Panel(text, title="New Visitor", title_align="center", border_style="bright_blue")
-                    console.print(panel)
-                    time.sleep(1)
-
     def stop_server(self):
         if self.process:
             self.process.terminate()
-            console.print(Panel(" Wanz Xploit Server stopped", style="bold yellow", border_style="red"))
+            console.print(Panel(f"Server stopped on {self.host}:{self.port}", style="bold yellow", border_style="red"))
+
+def run_bot(port):
+    server = SimplePHPServer(port=port)
+    server.start_server()
+    console.print(Panel(f"Bot running on [bold blue]http://{server.host}:{port}[/]", style="bold green"))
+    try:
+        while server.process and server.process.poll() is None:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        server.stop_server()
 
 def main():
     console.clear()
-    php_server = SimplePHPServer()
-    console.print(Panel("Starting MATA Server...", style="bold green", border_style="green"))
-    process = php_server.start_server()
+    bots = []
+    num_bots = 100  # Tentukan jumlah bot
 
-    if process is None:
-        console.print(Panel("Error: Unable to start server.", style="bold red"))
-        return
+    console.print(Panel(f"Starting {num_bots} bots...", style="bold green"))
+    for i in range(num_bots):
+        port = 8080 + i
+        thread = Thread(target=run_bot, args=(port,))
+        bots.append(thread)
+        thread.start()
+        time.sleep(0.1)  # Hindari konflik port
 
-    url = f"http://{php_server.host}:{php_server.port}"
-    console.print(Panel(f"MATA Server running at [bold blue]{url}[/]", style="bold green", border_style="blue"))
-
-    try:
-        php_server.monitor_logs()
-    except KeyboardInterrupt:
-        php_server.stop_server()
-    except Exception as e:
-        php_server.stop_server()
-        console.print(Panel(f"Error: {str(e)}", style="bold red"))
+    for bot in bots:
+        bot.join()
 
 if __name__ == "__main__":
     main()
+    
